@@ -9,5 +9,6 @@ window.addEventListener('load', function() {
     // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
     window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
   }
-  SimpleWallet.setProvider(web3.currentProvider);
+  SimpleAirDrop.setProvider(web3.currentProvider);
+  tokenStandard.setProvider(web3.currentProvider);
 });

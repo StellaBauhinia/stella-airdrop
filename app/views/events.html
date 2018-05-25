@@ -3,8 +3,8 @@
   <hr />
   <div ng-repeat='event in events.events'>
     Type: {{event.event}} <br  />
-    Amount: {{event.args.amount}} <br / />
-    Transaction Hash: {{event.transactionHash}}
+    
+    Transaction Hash: <a href={{event.url}} onclick="window.open(this.href);return false;">{{event.transactionHash}}</a>
     <hr  />
   </div>
 </div>

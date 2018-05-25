@@ -1,24 +1,8 @@
-# Simple Wallet
 
-This is a serverless dapp wallet built to study the integration angular and truffle for deployment on swarm.
-It Allows addresses that **the owner of the contract gave permission** to withdraw and deposit funds from it.
-See [Screenshots](#screenshots) section below to quickly understand what this app does.
+# Simple dAapp for standard token contracts
 
-![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/technologies.png)
-
-## See it live
-
-### Steps
-1. Install [Metamask](https://metamask.io/) - Allows dapp browsing without the need for a full client.
-2. Connect metamask to the **Rinkeby** testnet.
-3. Access the dapp on swarm through  [swarm-gateways](http://swarm-gateways.net/bzz:/d086e073a25d6822af98ca363cb4115b3a49a286f2af7722b545902c1b144124/index.html) or, if swarm is misbehaving (this is experimental technology), access it [here](https://mtsalenc.github.io/project-pages/simple-wallet/#!/).
-
-**Note 1**: The backend is not hosted on the main net. Instead, it is hosted on the Rinkeby testnet.
-
-**Note 2**: The frontend is hosted on swarm, which has not been deployed to the main net at the time of writing. It may not be available or misbehave (this is experimental technology).
-Therefore is **no guarantee** that the frontend will be available when you access it. There is a chance that the Rinkeby testnet is lacking miners and/or has been abandoned, resulting in congestion.
-
-[Contract info](https://rinkeby.etherscan.io/address/0x0a33f70dd9c9ff02c6fe41f02a94fe78c8d24db9)
+First of all, thank for the original author of [SimpleWallet](https://github.com/mtsalenc/simple-wallet) which provides me a good foundation to work on. (I am totally new in AngularJS!) This is a serverless dapp wallet built for anyone who wants to send airdrop/candy over Ethereum to other parties.
+It allows **the owner of the airdrop contract** to withdraw token out of the airdrop, which means, you should send the tokens to the airdrop contract first.
 
 ## Deploy Locally
 ### Prerequisites
@@ -26,29 +10,17 @@ Therefore is **no guarantee** that the frontend will be available when you acces
 - [git](https://git-scm.com/-) - the open source distributed vcs.
 - [nodejs 5.0+](https://github.com/nodejs/node) - Node.js JavaScript runtime.
 - [npm](https://github.com/npm/npm) - A package manager for javascript.
-- [truffle](https://github.com/trufflesuite/truffle) - The most popular Ethereum development framework.
-- [testrpc](https://github.com/ethereumjs/testrpc) - Fast Ethereum RPC client for testing and development.
+- Knowledge about how to deploy a contract to Ethreum (e.g. [Remix](http://remix.ethereum.org/) + [Metamask](https://metamask.io/), a nice tutorial is presented [here](https://medium.com/swlh/deploy-smart-contracts-on-ropsten-testnet-through-ethereum-remix-233cd1494b4b))
 
 ### Steps
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions assume you already got a deployed airdrop contract (the .sol file in [contracts/](#contracts)) address and other info.
 
-1. `git clone https://github.com/mtsalenc/SimpleWallet.git`
-2. `cd SimpleWallet/app`
+1. `git clone https://github.com/StellaBauhinia/stella-airdrop.git`
+2. `cd stella-airdrop/app`
 3. `npm install`
-4. `truffle compile`
-5. Start `testrpc` on another terminal
-6. Back on the previous terminal: `truffle migrate`
-7. Copy the json inside build/contracts/SimpleWallet.json and paste it as an argument to the TruffleContract() function inside app/js/contracts-setup.js
-8. Open index.html on any [modern](https://browsehappy.com/) browser.
-
-## Screenshots
-
-![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193652_1366x768_scrot.png)
-![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193729_1366x768_scrot.png)
-![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193744_1366x768_scrot.png)
-![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193828_1366x768_scrot.png)
-![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-194253_1366x768_scrot.png)
+4. Replace the contract address variables inside app/js/contracts-setup.js (note that network "1" represents the mainnet, "4" represents the Rinkeby testnet)
+5. Open index.html on any [modern](https://browsehappy.com/) browser.
 
 
 ## License

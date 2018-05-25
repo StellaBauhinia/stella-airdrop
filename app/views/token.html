@@ -1,0 +1,58 @@
+<div ng-controller="TokenController as applyToken">
+  <h1>Token's Admin Panel</h1>
+  <hr />
+  <ul class="list-unstyled">
+    <li ng-repeat="account in applyToken.accounts">
+      {{account}} (Is this the airdrop's admin?)
+    </li>
+  </ul>
+  <hr />
+  <div ng-hide="applyToken.paused">
+    <form ng-submit="applyToken.pause()">
+      <button type="submit" class="btn btn-default">Pause Airdrop</button>
+    </form>
+  </div>
+  <div ng-show="applyToken.pause_success">
+    <br/>
+    <div class="alert alert-success">
+      Airdrop paused successful
+    </div>
+  </div>
+  <div ng-hide="!applyToken.paused">
+    <form ng-submit="applyToken.unpause()">
+      <button type="submit" class="btn btn-default">Activate Airdrop</button>
+    </form>
+  </div>
+  <div ng-show="applyToken.unpause_success">
+    <br/>
+    <div class="alert alert-success">
+      Airdrop activation successful
+    </div>
+  </div>
+  <hr />
+  <div ng-hide="applyToken.transfer_success">
+    <form ng-submit="applyToken.setTokenTo(address)">
+      <div class="form-group">
+        <label for="tokenAddress">New Token Address</label>
+        <input id="tokenAddress" ng-model="address" class="form-control" placeholder="0x3e61..." />
+      </div>
+      
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+  <div ng-show="applyToken.transfer_success">
+    <div class="alert alert-success">
+      Token applied successful
+    </div>
+  </div>
+  <div ng-show="applyToken.has_errors">
+    <div class="alert alert-error">
+      {{applyToken.has_errors}}
+    </div>
+  </div>
+  <div ng-show="!applyToken.isAllowedToOperate">
+    <div class="alert alert-error">
+      The airdrop cannot be switched to another token. Perhaps the airdrop contract is not paused, or {{applyToken.selectedAccount}} does not have permission to operate it.
+    </div>
+  </div>
+</div>

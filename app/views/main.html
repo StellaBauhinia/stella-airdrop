@@ -1,6 +1,10 @@
 <div ng-controller="MainController as main">
-  <h1>Balance</h1>
+  <h1>AirDrop Status</h1>
   <hr />
-  <h3>In ether: {{main.balanceInEther}}</h3>
-  <h4>In wei: {{main.balance}}</h4>
+  <h3>Active or not: {{main.active}}</h3>
+  <h4>Current Token: <a href={{main.url}} onclick="window.open(this.href);return false;">{{main.tokenAddr}} </a></h4>
+  <h4>Token's Name: {{main.tokenName}}</h4>
+  <h4>Token's Symbol: {{main.tokenSymbol}}</h4>
+  <h4>Token's Decimals: {{main.tokenDec}}</h4>
+  <h4>Token's Holding in Airdrop: {{main.tokenBalance}} {{main.tokenSymbol}}</h4>
 </div>
